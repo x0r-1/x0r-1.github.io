@@ -26,13 +26,13 @@
     }
 
     .container {
-      max-width: 800px; /* narrowed for a more focused mobile-like look */
+      max-width: 800px; 
       margin: 0 auto;
       padding: 80px 24px;
     }
 
     header {
-      margin-bottom: 100px;
+      margin-bottom: 80px;
       text-align: center;
     }
 
@@ -53,7 +53,7 @@
     .apps-stack {
       display: flex;
       flex-direction: column;
-      gap: 80px;
+      gap: 60px;
     }
 
     .app-card {
@@ -71,11 +71,10 @@
       border-color: #333;
     }
 
-    /* Video Section: Modified to show FULL video (9:16 aspect ratio) */
+    /* تحسين طول الفيديو ليكون أقصر قليلاً */
     .video-container {
       width: 100%;
-      /* This ensures the video appears in full portrait mode like TikTok */
-      aspect-ratio: 9 / 16; 
+      aspect-ratio: 10 / 14; /* تقليل الطول مقارنة بـ 9/16 */
       background: #000;
       overflow: hidden;
       border-bottom: 1px solid var(--border);
@@ -84,8 +83,7 @@
     .video-container video {
       width: 100%;
       height: 100%;
-      /* Changed from 'cover' to 'contain' or 'fill' to ensure the whole video shows */
-      object-fit: contain; 
+      object-fit: cover; /* لضمان ملء المساحة بشكل أنيق مع الأبعاد الجديدة */
       opacity: 0.7;
       transition: var(--transition);
     }
@@ -98,7 +96,6 @@
       padding: 40px;
     }
 
-    /* Tag and Titles */
     .app-card span {
       font-family: 'JetBrains Mono';
       font-size: 0.75rem;
@@ -110,32 +107,32 @@
     }
 
     .app-card h2 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       margin: 0 0 15px 0;
       font-weight: 700;
     }
 
     .app-card p {
       color: var(--text-muted);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       max-width: 650px;
-      margin-bottom: 40px;
+      margin-bottom: 35px;
     }
 
-    /* Links */
+    /* تحسين عرض الروابط والمتاجر */
     .links {
       display: flex;
-      gap: 15px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
     .links a {
       font-family: 'JetBrains Mono';
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: var(--accent);
       text-decoration: none;
       border: 1px solid var(--border);
-      padding: 12px 25px;
+      padding: 10px 20px;
       transition: 0.3s ease;
     }
 
@@ -145,7 +142,7 @@
     }
 
     footer {
-      margin-top: 150px;
+      margin-top: 120px;
       padding: 50px 0;
       border-top: 1px solid var(--border);
       display: flex;
@@ -159,8 +156,8 @@
 
     @media (max-width: 600px) {
       .app-content { padding: 30px; }
-      .app-card h2 { font-size: 2rem; }
-      .links a { width: 100%; text-align: center; }
+      .app-card h2 { font-size: 1.8rem; }
+      .links a { flex-grow: 1; text-align: center; }
     }
   </style>
 </head>
@@ -185,8 +182,9 @@
           <h2>أثر</h2>
           <p>تطبيق يشبه تجربة "تيك توك" لكن بمحتوى نقي؛ بدون إعلانات، وخالي تماماً من أي محرمات، ليمنحك أثراً طيباً في كل ثانية.</p>
           <div class="links">
-            <a href="https://raw.githubusercontent.com/x0r-1/athar_app/main/athar.apk">تحميل APK</a>
-            <a href="#">GitHub</a>
+            <a href="https://raw.githubusercontent.com/x0r-1/athar_app/main/athar.apk">GitHub (APK)</a>
+            <a href="https://apkpure.com/p/com.example.athar">APKPure</a>
+            <a href="#">Uptodown</a>
           </div>
         </div>
       </div>
@@ -200,8 +198,9 @@
           <h2>الفرقان</h2>
           <p>مصحف مميز، صُمم ليكون رفيقك في تلاوة القرآن الكريم بواجهة مريحة للعين وتجربة خالية من المشتتات.</p>
           <div class="links">
-            <a href="https://raw.githubusercontent.com/x0r-1/Al_Furqan_App/main/al_furqan.apk">تحميل APK</a>
-            <a href="#">GitHub</a>
+            <a href="https://raw.githubusercontent.com/x0r-1/Al_Furqan_App/main/al_furqan.apk">GitHub (APK)</a>
+            <a href="https://apkpure.com/p/com.example.al_furqan">APKPure</a>
+            <a href="#">Uptodown</a>
           </div>
         </div>
       </div>
@@ -215,8 +214,9 @@
           <h2>الذكر</h2>
           <p>أذكار وسبحة إلكترونية بتصميم هادئ ومريح للأعصاب، يساعدك على المحافظة على وردك اليومي بكل بساطة.</p>
           <div class="links">
-            <a href="https://x0r-1.github.io/AlZeker_App/app-latest.apk">تحميل APK</a>
-            <a href="#">GitHub</a>
+            <a href="https://x0r-1.github.io/AlZeker_App/app-latest.apk">GitHub (APK)</a>
+            <a href="https://apkpure.com/p/com.x0r.dhikr">APKPure</a>
+            <a href="#">Uptodown</a>
           </div>
         </div>
       </div>
