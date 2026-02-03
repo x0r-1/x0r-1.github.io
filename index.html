@@ -1,67 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>x0r — Tools & Applications</title>
+  <title>x0r — أدوات وتطبيقات</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="assets/js/main.js"></script>
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-
+  
+  <style>
+    h1, h2 {
+      letter-spacing: -1px;
+    }
+    .project::before {
+      content: attr(data-index);
+      font-family: 'JetBrains Mono', monospace;
+      opacity: 0.5;
+    }
+  </style>
 </head>
 
 <body>
 
   <div class="container">
 
-    <!-- HEADER -->
     <header>
       <h1>x0r</h1>
       <p>
-        Tools & applications.<br>
-        Minimal. Purpose-driven. Quiet by design.
+        أدوات وتطبيقات.<br>
+        بساطة. تركيز. هدوء في التصميم.
       </p>
     </header>
 
-    <!-- PROJECTS -->
     <section class="projects">
 
-      <div class="project" data-index="[ 01 ]">
-        <h2>Bots</h2>
-        <span>Telegram Bot</span>
+      <div class="project" data-index="[ ٠١ ]">
+        <h2>بوتات</h2>
+        <span>تليجرام بوت</span>
         <p>
-          Daily Quran verses and reminders.  
-          Lightweight. No ads. No tracking.
+          آيات قرآنية وأذكار يومية.<br>
+          خفيف. بدون إعلانات. بدون تتبع.
         </p>
         <div class="links">
-          <a href="bots.html">Go</a>
+          <a href="bots.html">دخول</a>
         </div>
       </div>
 
-      <div class="project" data-index="[ 02 ]">
-        <h2>Apps</h2>
-        <span>Android Application</span>
+      <div class="project" data-index="[ ٠٢ ]">
+        <h2>تطبيقات</h2>
+        <span>تطبيق أندرويد</span>
         <p>
-          Accurate prayer times with offline support.  
-          Designed for clarity and focus.
+          مواقيت صلاة دقيقة مع دعم العمل بدون إنترنت.<br>
+          مُصمم للوضوح والتركيز.
         </p>
         <div class="links">   
-          <a href="apps.html">Go</a>
+          <a href="apps.html">دخول</a>
         </div>
       </div>
 
     </section>
 
-    <!-- FOOTER -->
     <footer>
       <div>© x0r</div>
       <div>
-       
         <a href="https://github.com/x0r-1">GitHub</a>
         <a href="https://t.me/x0r_123">Telegram</a>
-        <a href="https://www.linkedin.com/in/osama-alaa-el-bendary-379452380/">Linkedin</a>
+        <a href="https://www.linkedin.com/in/osama-alaa-el-bendary-379452380/">LinkedIn</a>
       </div>
     </footer>
 
