@@ -1,21 +1,20 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>x0r — Portfolio</title>
   
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;600&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    /* المتغيرات الأساسية للهوية البصرية */
     :root {
       --bg: #050505;
       --card-bg: #0d0d0d;
       --accent: #ffffff;
       --text-muted: #707070;
       --border: #1a1a1a;
-      --transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+      --transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
     }
 
     * {
@@ -27,21 +26,19 @@
     body {
       background-color: var(--bg);
       color: var(--accent);
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       margin: 0;
-      overflow-x: hidden;
-      line-height: 1.7;
+      line-height: 1.6;
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 100px 24px;
     }
 
-    /* الهيدر */
     header {
-      margin-bottom: 120px;
+      margin-bottom: 100px;
       animation: reveal 1.2s ease;
     }
 
@@ -55,22 +52,21 @@
 
     header p {
       color: var(--text-muted);
-      font-size: 1.1rem;
-      max-width: 500px;
+      font-size: 1.2rem;
       margin-top: 10px;
     }
 
-    /* شبكة المشاريع - كروت */
+    /* Grid System - Cards Side by Side */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 30px;
     }
 
     .card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      padding: 50px 40px;
+      padding: 60px 45px;
       position: relative;
       text-decoration: none;
       color: inherit;
@@ -78,72 +74,82 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 300px;
+      min-height: 400px;
+      overflow: hidden;
     }
 
-    /* الرقم الصغير في الزاوية */
-    .card::before {
-      content: attr(data-index);
-      font-family: 'JetBrains Mono';
+    /* Modern Background Accent on Hover */
+    .card::after {
+      content: "";
       position: absolute;
-      top: 30px;
-      right: 30px;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      opacity: 0.5;
-    }
-
-    /* الأنيميشن عند المرور بالماوس */
-    .card:hover {
-      border-color: #333;
-      background: #111;
-      transform: translateY(-8px);
-    }
-
-    .card:hover h2 {
-      transform: translateX(-10px);
-    }
-
-    .card h2 {
-      font-size: 2rem;
-      margin: 0 0 15px 0;
-      transition: var(--transition);
-      font-weight: 600;
-    }
-
-    .card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 30px;
-    }
-
-    .status-tag {
-      font-family: 'JetBrains Mono';
-      font-size: 0.65rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      border: 1px solid var(--border);
-      padding: 5px 12px;
-      width: fit-content;
-      margin-bottom: 20px;
-    }
-
-    .card-footer {
-      font-family: 'JetBrains Mono';
-      font-size: 0.8rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at top right, rgba(255,255,255,0.03), transparent);
       opacity: 0;
       transition: var(--transition);
     }
 
-    .card:hover .card-footer {
-      opacity: 1;
+    .card:hover::after { opacity: 1; }
+
+    .card::before {
+      content: attr(data-index);
+      font-family: 'JetBrains Mono';
+      position: absolute;
+      top: 35px;
+      left: 35px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      opacity: 0.5;
     }
 
-    /* التذييل */
+    .card:hover {
+      border-color: #333;
+      transform: translateY(-10px);
+    }
+
+    .card h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      margin: 30px 0 15px 0;
+      transition: var(--transition);
+      font-weight: 700;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 40px;
+    }
+
+    .status-tag {
+      font-family: 'JetBrains Mono';
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      width: fit-content;
+      margin-bottom: 10px;
+    }
+
+    .card-footer {
+      font-family: 'JetBrains Mono';
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: var(--accent);
+      transition: var(--transition);
+    }
+
+    .card-footer span {
+      transition: var(--transition);
+    }
+
+    .card:hover .card-footer span {
+      transform: translateX(10px);
+    }
+
     footer {
       margin-top: 150px;
       padding-top: 40px;
@@ -153,35 +159,27 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 20px;
-    }
-
-    footer .copyright {
       color: var(--text-muted);
-      font-size: 0.9rem;
     }
 
-    footer .links a {
+    footer a {
       color: var(--text-muted);
       text-decoration: none;
-      margin-right: 25px;
+      margin-left: 25px;
       font-size: 0.9rem;
       transition: 0.3s;
     }
 
-    footer .links a:hover {
-      color: var(--accent);
-    }
+    footer a:hover { color: var(--accent); }
 
-    /* أنيميشن الدخول */
     @keyframes reveal {
       from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
       to { opacity: 1; transform: translateY(0); filter: blur(0); }
     }
 
     @media (max-width: 600px) {
-      .container { padding: 60px 20px; }
-      header { margin-bottom: 60px; }
-      .card { padding: 30px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .card { padding: 40px 30px; min-height: 350px; }
     }
   </style>
 </head>
@@ -192,33 +190,33 @@
     
     <header>
       <h1>x0r</h1>
-      <p>تطبيقات مركزة، أدوات هادئة، وكتابات تقنية تترك أثراً.</p>
+      <p>Building quiet tools and documenting the journey of digital impact.</p>
     </header>
 
     <main class="projects-grid">
 
-      <a href="apps.html" class="card" data-index="[ ٠١ ]">
+      <a href="apps.html" class="card" data-index="[ 01 ]">
         <div>
           <div class="status-tag">Software</div>
-          <h2>التطبيقات</h2>
-          <p>بناء أدوات رقمية مفتوحة المصدر تركز على الخصوصية والمنفعة، من تطبيقات الأذكار إلى خدمات الصلاة.</p>
+          <h2>Apps</h2>
+          <p>Privacy-focused, minimal digital tools designed for daily spiritual and functional needs.</p>
         </div>
-        <div class="card-footer">VIEW PROJECTS <span>←</span></div>
+        <div class="card-footer">EXPLORE PROJECTS <span>→</span></div>
       </a>
 
-      <a href="#" class="card" data-index="[ ٠٢ ]">
+      <a href="#" class="card" data-index="[ 02 ]">
         <div>
-          <div class="status-tag">Coming Soon</div>
+          <div class="status-tag">Articles</div>
           <h2>Writeups</h2>
-          <p>مساحة لمشاركة الخبرات في صيد الثغرات (Bug Bounty) وتحليل الأنظمة البرمجية.</p>
+          <p>Technical logs covering bug bounty hunting, security research, and system architecture.</p>
         </div>
-        <div class="card-footer">READ MORE <span>←</span></div>
+        <div class="card-footer">READ ARTICLES <span>→</span></div>
       </a>
 
     </main>
 
     <footer>
-      <div class="copyright">© 2026 x0r — Crafted with precision</div>
+      <div>© 2026 x0r — Crafted with precision</div>
       <div class="links">
         <a href="https://github.com/x0r-1">GitHub</a>
         <a href="https://t.me/x0r_123">Telegram</a>
