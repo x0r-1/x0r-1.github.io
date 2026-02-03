@@ -4,8 +4,181 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>x0r — التطبيقات</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;600&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    :root {
+      --bg: #050505;
+      --card-bg: #0d0d0d;
+      --accent: #ffffff;
+      --text-muted: #707070;
+      --border: #1a1a1a;
+      --transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--accent);
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    header {
+      margin-bottom: 80px;
+      text-align: right;
+    }
+
+    header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3.5rem;
+      margin: 0;
+      letter-spacing: -3px;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    /* شبكة الكروت الطولية */
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .app-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      position: relative;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .app-card:hover {
+      border-color: #333;
+      transform: translateY(-10px);
+    }
+
+    /* منطقة الفيديو */
+    .video-container {
+      width: 100%;
+      height: 200px;
+      background: #000;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+      transition: var(--transition);
+    }
+
+    .app-card:hover video {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    /* محتوى الكارت */
+    .app-content {
+      padding: 30px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .app-card::before {
+      content: attr(data-index);
+      font-family: 'JetBrains Mono';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 0.7rem;
+      z-index: 10;
+      background: rgba(0,0,0,0.5);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .app-card h2 {
+      font-size: 1.8rem;
+      margin: 0 0 10px 0;
+      font-weight: 700;
+    }
+
+    .app-card span {
+      font-family: 'JetBrains Mono';
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    .app-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 25px;
+      flex-grow: 1;
+    }
+
+    /* الروابط */
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: auto;
+    }
+
+    .links a {
+      font-family: 'JetBrains Mono';
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: 8px 15px;
+      transition: 0.3s;
+    }
+
+    .links a:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    footer {
+      margin-top: 100px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer a { color: var(--text-muted); text-decoration: none; margin-right: 20px; transition: 0.3s; }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2.5rem; }
+      .apps-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 
 <body>
@@ -14,68 +187,67 @@
 
     <header>
       <h1>التطبيقات</h1>
-      <p>
-        تطبيقات رقمية مركزة.<br>
-        بُنيت بوضوح، صُممت لتدوم.
-      </p>
+      <p>بصمة رقمية.. صُممت لتدوم.</p>
     </header>
 
-    <section class="projects">
+    <div class="apps-grid">
 
-      <div class="project" data-index="[ ٠١ ]">
-        <h2>أثر</h2>
-        <span>تطبيق أندرويد</span>
-        <p>
-          "أثر" هو المشروع الجوهري؛ يركز على المحتوى ذو القيمة، المعنى، والأثر طويل المدى.
-        </p>
-        <div class="links">
-          <a href="https://raw.githubusercontent.com/x0r-1/athar_app/main/athar.apk">
-            تحميل (GitHub)
-          </a>
-          <a href="https://apkpure.com/p/com.example.athar">تحميل (APKPure)</a>
-          <a href="#">تحميل (Uptodown)</a>
+      <div class="app-card" data-index="[ ٠١ ]">
+        <div class="video-container">
+          <video src="assets/athar.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="app-content">
+          <span>Android Application</span>
+          <h2>أثر</h2>
+          <p>"أثر" هو المشروع الجوهري؛ يركز على المحتوى ذو القيمة، المعنى، والأثر طويل المدى.</p>
+          <div class="links">
+            <a href="https://raw.githubusercontent.com/x0r-1/athar_app/main/athar.apk">GitHub</a>
+            <a href="https://apkpure.com/p/com.example.athar">APKPure</a>
+            <a href="#">Uptodown</a>
+          </div>
         </div>
       </div>
 
-      <div class="project" data-index="[ ٠٢ ]">
-        <h2>الذكر</h2>
-        <span>تطبيق أندرويد</span>
-        <p>
-          تطبيق أذكار مفتوح المصدر، يعمل بالكامل بدون اتصال بالإنترنت مع تركيز تام على البساطة.
-        </p>
-        <div class="links">
-          <a href="https://x0r-1.github.io/AlZeker_App/app-latest.apk">
-            تحميل (GitHub)
-          </a>
-          <a href="https://apkpure.com/p/com.x0r.dhikr">تحميل (APKPure)</a>
-          <a href="#">تحميل (Uptodown)</a>
+      <div class="app-card" data-index="[ ٠٢ ]">
+        <div class="video-container">
+          <video src="assets/zekr.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="app-content">
+          <span>Android Application</span>
+          <h2>الذكر</h2>
+          <p>تطبيق أذكار مفتوح المصدر، يعمل بالكامل بدون اتصال بالإنترنت مع تركيز تام على البساطة.</p>
+          <div class="links">
+            <a href="https://x0r-1.github.io/AlZeker_App/app-latest.apk">GitHub</a>
+            <a href="https://apkpure.com/p/com.x0r.dhikr">APKPure</a>
+            <a href="#">Uptodown</a>
+          </div>
         </div>
       </div>
 
-      <div class="project" data-index="[ ٠٣ ]">
-        <h2>الفرقان</h2>
-        <span>تطبيق أندرويد</span>
-        <p>
-          تطبيق قرآني مركز، صُمم ليوفر تجربة قراءة واضحة وسهلة الاستخدام.
-        </p>
-        <div class="links">
-          <a href="https://raw.githubusercontent.com/x0r-1/Al_Furqan_App/main/al_furqan.apk">
-            تحميل (GitHub)
-          </a>
-          <a href="https://apkpure.com/p/com.example.al_furqan">تحميل (APKPure)</a>
-          <a href="#">تحميل (Uptodown)</a>
+      <div class="app-card" data-index="[ ٠٣ ]">
+        <div class="video-container">
+          <video src="assets/furqan.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="app-content">
+          <span>Android Application</span>
+          <h2>الفرقان</h2>
+          <p>تطبيق قرآني مركز، صُمم ليوفر تجربة قراءة واضحة وسهلة الاستخدام.</p>
+          <div class="links">
+            <a href="https://raw.githubusercontent.com/x0r-1/Al_Furqan_App/main/al_furqan.apk">GitHub</a>
+            <a href="https://apkpure.com/p/com.example.al_furqan">APKPure</a>
+            <a href="#">Uptodown</a>
+          </div>
         </div>
       </div>
 
-    </section>
+    </div>
 
     <footer>
       <div>© x0r</div>
       <div>
-        <a href="/index.html">الرئيسية</a>
+        <a href="index.html">الرئيسية</a>
         <a href="https://github.com/x0r-1">GitHub</a>
         <a href="https://t.me/x0r_123">Telegram</a>
-        <a href="https://www.linkedin.com/in/osama-alaa-el-bendary-379452380/">LinkedIn</a>
       </div>
     </footer>
 
