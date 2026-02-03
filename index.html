@@ -3,20 +3,142 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>x0r</title>
+  <title>x0r — Projects & Writeups</title>
   <link rel="stylesheet" href="assets/css/style.css">
-  <script src="assets/js/main.js"></script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;600&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
-    h1, h2 {
-      letter-spacing: -1px;
+    :root {
+      --bg: #0a0a0a;
+      --card-bg: #111;
+      --accent: #fff;
+      --text-muted: #888;
+      --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .project::before {
+
+    body {
+      background-color: var(--bg);
+      color: var(--accent);
+      font-family: 'IBM+Plex+Sans+Arabic', sans-serif;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    header {
+      margin-bottom: 80px;
+      text-align: center;
+      animation: fadeIn 1s ease-out;
+    }
+
+    header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      margin-bottom: 10px;
+      letter-spacing: -2px;
+    }
+
+    /* نظام الكروت الجديد */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid #222;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .card::before {
       content: attr(data-index);
-      font-family: 'JetBrains Mono', monospace;
-      opacity: 0.5;
+      font-family: 'JetBrains Mono';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* الأنييميشن عند المرور بالماوس (Hover) */
+    .card:hover {
+      border-color: #444;
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .card h2 {
+      font-size: 1.8rem;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      transition: var(--transition);
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .card .status {
+      font-family: 'JetBrains Mono';
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 8px;
+      border: 1px solid #333;
+      display: inline-block;
+    }
+
+    /* تأثير الكلام "الفخم" عند الضغط */
+    .card:active {
+      transform: scale(0.98);
+    }
+
+    footer {
+      margin-top: 100px;
+      padding-top: 40px;
+      border-top: 1px solid #222;
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-right: 20px;
+      transition: 0.3s;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* تحسين الأرقام العربية لتظهر بشكل فخم */
+    [dir="rtl"] .card::before {
+      left: auto;
+      right: 20px;
     }
   </style>
 </head>
@@ -24,36 +146,32 @@
 <body>
 
   <div class="container">
-    <section class="projects">
+    
+    <header>
+      <h1>x0r</h1>
+      <p style="color: var(--text-muted);">نصنع الأثر، نكتب الكود، ونترك بصمة رقمية هادئة.</p>
+    </header>
 
-      <div class="project" data-index="[ ٠١ ]">
-        <h2>بوتات</h2>
-        <span>تليجرام بوت</span>
-        <p>
-          آيات قرآنية وأذكار يومية.<br>
-          خفيف. بدون إعلانات. بدون تتبع.
-        </p>
-        <div class="links">
-          <a href="bots.html">دخول</a>
-        </div>
-      </div>
+    <div class="projects-grid">
 
-      <div class="project" data-index="[ ٠٢ ]">
-        <h2>تطبيقات</h2>
-        <span>تطبيق أندرويد</span>
-        <p>
-          مواقيت صلاة دقيقة مع دعم العمل بدون إنترنت.<br>
-          مُصمم للوضوح والتركيز.
-        </p>
-        <div class="links">   
-          <a href="apps.html">دخول</a>
-        </div>
-      </div>
+      <a href="apps.html" class="card" data-index="[ ٠١ ]">
+        <div class="status">إصدارات مستقرة</div>
+        <h2>التطبيقات</h2>
+        <p>مجموعة من الأدوات الإسلامية والتقنية المصممة بدقة لتلبية احتياجات المستخدم بخصوصية تامة.</p>
+        <div style="font-family: 'JetBrains Mono'; font-size: 0.8rem;">EXPLORE PROJECTS →</div>
+      </a>
 
-    </section>
+      <a href="#" class="card" data-index="[ ٠٢ ]">
+        <div class="status">قريباً</div>
+        <h2>التقارير والكتابات</h2>
+        <p>توثيق لرحلات صيد الثغرات (Bug Bounty) وشروحات تقنية في الأمن السيبراني والبرمجة.</p>
+        <div style="font-family: 'JetBrains Mono'; font-size: 0.8rem;">READ ARTICLES →</div>
+      </a>
+
+    </div>
 
     <footer>
-      <div>© x0r</div>
+      <div>© 2026 x0r — صُنع بشغف</div>
       <div>
         <a href="https://github.com/x0r-1">GitHub</a>
         <a href="https://t.me/x0r_123">Telegram</a>
@@ -62,6 +180,18 @@
     </footer>
 
   </div>
+
+  <script>
+    // إضافة تأثير "الفخامة" عند الضغط: تفتيح الكارت لحظياً
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mousedown', () => {
+        card.style.backgroundColor = '#1a1a1a';
+      });
+      card.addEventListener('mouseup', () => {
+        card.style.backgroundColor = 'var(--card-bg)';
+      });
+    });
+  </script>
 
 </body>
 </html>
