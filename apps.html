@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>x0r — Applications</title>
+  <title>x0r — Apps</title>
   
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;600&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -20,13 +20,13 @@
     body {
       background-color: var(--bg);
       color: var(--accent);
-      font-family: 'Inter', sans-serif;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
       margin: 0;
       line-height: 1.6;
     }
 
     .container {
-      max-width: 900px; /* narrowed for better readability in stack mode */
+      max-width: 800px; /* narrowed for a more focused mobile-like look */
       margin: 0 auto;
       padding: 80px 24px;
     }
@@ -47,13 +47,13 @@
       color: var(--text-muted);
       font-size: 1.1rem;
       margin-top: 10px;
+      font-family: 'Space Grotesk', sans-serif;
     }
 
-    /* Vertical Stack Layout */
     .apps-stack {
       display: flex;
       flex-direction: column;
-      gap: 60px; /* Space between cards */
+      gap: 80px;
     }
 
     .app-card {
@@ -69,13 +69,13 @@
 
     .app-card:hover {
       border-color: #333;
-      transform: translateY(-5px);
     }
 
-    /* Wide Video Section */
+    /* Video Section: Modified to show FULL video (9:16 aspect ratio) */
     .video-container {
       width: 100%;
-      aspect-ratio: 16 / 9; /* Professional Cinematic Ratio */
+      /* This ensures the video appears in full portrait mode like TikTok */
+      aspect-ratio: 9 / 16; 
       background: #000;
       overflow: hidden;
       border-bottom: 1px solid var(--border);
@@ -84,57 +84,45 @@
     .video-container video {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      opacity: 0.4;
+      /* Changed from 'cover' to 'contain' or 'fill' to ensure the whole video shows */
+      object-fit: contain; 
+      opacity: 0.7;
       transition: var(--transition);
     }
 
     .app-card:hover video {
-      opacity: 0.8;
-      transform: scale(1.02);
+      opacity: 1;
     }
 
-    /* Content Section */
     .app-content {
       padding: 40px;
     }
 
-    .app-card::before {
-      content: attr(data-index);
-      font-family: 'JetBrains Mono';
-      position: absolute;
-      top: 30px;
-      left: 30px;
-      font-size: 0.8rem;
-      z-index: 10;
-      color: var(--text-muted);
-    }
-
-    .app-card h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.5rem;
-      margin: 0 0 10px 0;
-      font-weight: 700;
-    }
-
+    /* Tag and Titles */
     .app-card span {
       font-family: 'JetBrains Mono';
       font-size: 0.75rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 2px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       display: block;
+    }
+
+    .app-card h2 {
+      font-size: 2.5rem;
+      margin: 0 0 15px 0;
+      font-weight: 700;
     }
 
     .app-card p {
       color: var(--text-muted);
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       max-width: 650px;
       margin-bottom: 40px;
     }
 
-    /* Buttons Stacked for Wide View */
+    /* Links */
     .links {
       display: flex;
       gap: 15px;
@@ -154,7 +142,6 @@
     .links a:hover {
       background: var(--accent);
       color: var(--bg);
-      border-color: var(--accent);
     }
 
     footer {
@@ -172,7 +159,7 @@
 
     @media (max-width: 600px) {
       .app-content { padding: 30px; }
-      .app-card h2 { font-size: 1.8rem; }
+      .app-card h2 { font-size: 2rem; }
       .links a { width: 100%; text-align: center; }
     }
   </style>
@@ -184,55 +171,52 @@
 
     <header>
       <h1>Apps</h1>
-      <p>Focused builds. Minimal interfaces.</p>
+      <p>Apps crafted for you.</p>
     </header>
 
     <div class="apps-stack">
 
-      <div class="app-card" data-index="[ 01 ]">
+      <div class="app-card">
         <div class="video-container">
           <video src="assets/athar.mp4" autoplay muted loop playsinline></video>
         </div>
         <div class="app-content">
-          <span>Core Project • Android</span>
-          <h2>Athar</h2>
-          <p>A flagship application designed to deliver meaningful religious content with a focus on long-term impact and user tranquility.</p>
+          <span>Android App</span>
+          <h2>أثر</h2>
+          <p>تطبيق يشبه تجربة "تيك توك" لكن بمحتوى نقي؛ بدون إعلانات، وخالي تماماً من أي محرمات، ليمنحك أثراً طيباً في كل ثانية.</p>
           <div class="links">
-            <a href="https://raw.githubusercontent.com/x0r-1/athar_app/main/athar.apk">GitHub Repository</a>
-            <a href="#">APKPure</a>
-            <a href="#">Uptodown</a>
+            <a href="https://raw.githubusercontent.com/x0r-1/athar_app/main/athar.apk">تحميل APK</a>
+            <a href="#">GitHub</a>
           </div>
         </div>
       </div>
 
-      <div class="app-card" data-index="[ 02 ]">
-        <div class="video-container">
-          <video src="assets/zekr.mp4" autoplay muted loop playsinline></video>
-        </div>
-        <div class="app-content">
-          <span>Utility • Open Source</span>
-          <h2>Al Zekr</h2>
-          <p>An offline-ready remembrance tool. Built for simplicity, speed, and absolute privacy. No ads, no tracking, just focus.</p>
-          <div class="links">
-            <a href="https://x0r-1.github.io/AlZeker_App/app-latest.apk">GitHub Repository</a>
-            <a href="#">APKPure</a>
-            <a href="#">Uptodown</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="app-card" data-index="[ 03 ]">
+      <div class="app-card">
         <div class="video-container">
           <video src="assets/furqan.mp4" autoplay muted loop playsinline></video>
         </div>
         <div class="app-content">
-          <span>Reading • Android</span>
-          <h2>Al Furqan</h2>
-          <p>A specialized Quran application crafted for clarity. It removes digital distractions to provide a pure reading experience.</p>
+          <span>Android App</span>
+          <h2>الفرقان</h2>
+          <p>مصحف مميز، صُمم ليكون رفيقك في تلاوة القرآن الكريم بواجهة مريحة للعين وتجربة خالية من المشتتات.</p>
           <div class="links">
-            <a href="https://raw.githubusercontent.com/x0r-1/Al_Furqan_App/main/al_furqan.apk">GitHub Repository</a>
-            <a href="#">APKPure</a>
-            <a href="#">Uptodown</a>
+            <a href="https://raw.githubusercontent.com/x0r-1/Al_Furqan_App/main/al_furqan.apk">تحميل APK</a>
+            <a href="#">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="video-container">
+          <video src="assets/zekr.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="app-content">
+          <span>Android App</span>
+          <h2>الذكر</h2>
+          <p>أذكار وسبحة إلكترونية بتصميم هادئ ومريح للأعصاب، يساعدك على المحافظة على وردك اليومي بكل بساطة.</p>
+          <div class="links">
+            <a href="https://x0r-1.github.io/AlZeker_App/app-latest.apk">تحميل APK</a>
+            <a href="#">GitHub</a>
           </div>
         </div>
       </div>
@@ -242,7 +226,7 @@
     <footer>
       <div>© 2026 x0r</div>
       <div class="links-footer">
-        <a href="index.html">Home</a>
+        <a href="index.html">الرئيسية</a>
         <a href="https://github.com/x0r-1">GitHub</a>
         <a href="https://t.me/x0r_123">Telegram</a>
       </div>
