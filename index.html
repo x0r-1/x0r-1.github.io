@@ -3,142 +3,185 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>x0r — Projects & Writeups</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <title>x0r — Portfolio</title>
   
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;600&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
+    /* المتغيرات الأساسية للهوية البصرية */
     :root {
-      --bg: #0a0a0a;
-      --card-bg: #111;
-      --accent: #fff;
-      --text-muted: #888;
-      --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --bg: #050505;
+      --card-bg: #0d0d0d;
+      --accent: #ffffff;
+      --text-muted: #707070;
+      --border: #1a1a1a;
+      --transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      selection-background: var(--accent);
+      selection-color: var(--bg);
     }
 
     body {
       background-color: var(--bg);
       color: var(--accent);
-      font-family: 'IBM+Plex+Sans+Arabic', sans-serif;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
       margin: 0;
-      line-height: 1.6;
+      overflow-x: hidden;
+      line-height: 1.7;
     }
 
     .container {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 60px 20px;
+      padding: 100px 24px;
     }
 
+    /* الهيدر */
     header {
-      margin-bottom: 80px;
-      text-align: center;
-      animation: fadeIn 1s ease-out;
+      margin-bottom: 120px;
+      animation: reveal 1.2s ease;
     }
 
     header h1 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 3rem;
-      margin-bottom: 10px;
-      letter-spacing: -2px;
+      font-size: clamp(3rem, 10vw, 5rem);
+      margin: 0;
+      letter-spacing: -4px;
+      font-weight: 700;
     }
 
-    /* نظام الكروت الجديد */
+    header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin-top: 10px;
+    }
+
+    /* شبكة المشاريع - كروت */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
     }
 
     .card {
       background: var(--card-bg);
-      border: 1px solid #222;
-      padding: 40px;
+      border: 1px solid var(--border);
+      padding: 50px 40px;
       position: relative;
-      overflow: hidden;
-      transition: var(--transition);
-      cursor: pointer;
       text-decoration: none;
       color: inherit;
-      display: block;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 300px;
     }
 
+    /* الرقم الصغير في الزاوية */
     .card::before {
       content: attr(data-index);
       font-family: 'JetBrains Mono';
       position: absolute;
-      top: 20px;
-      left: 20px;
-      font-size: 0.8rem;
+      top: 30px;
+      right: 30px;
+      font-size: 0.75rem;
       color: var(--text-muted);
+      opacity: 0.5;
     }
 
-    /* الأنييميشن عند المرور بالماوس (Hover) */
+    /* الأنيميشن عند المرور بالماوس */
     .card:hover {
-      border-color: #444;
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      border-color: #333;
+      background: #111;
+      transform: translateY(-8px);
+    }
+
+    .card:hover h2 {
+      transform: translateX(-10px);
     }
 
     .card h2 {
-      font-size: 1.8rem;
-      margin-top: 20px;
-      margin-bottom: 10px;
+      font-size: 2rem;
+      margin: 0 0 15px 0;
       transition: var(--transition);
+      font-weight: 600;
     }
 
     .card p {
       color: var(--text-muted);
       font-size: 0.95rem;
+      margin-bottom: 30px;
+    }
+
+    .status-tag {
+      font-family: 'JetBrains Mono';
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      width: fit-content;
       margin-bottom: 20px;
     }
 
-    .card .status {
+    .card-footer {
       font-family: 'JetBrains Mono';
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 4px 8px;
-      border: 1px solid #333;
-      display: inline-block;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      transition: var(--transition);
     }
 
-    /* تأثير الكلام "الفخم" عند الضغط */
-    .card:active {
-      transform: scale(0.98);
+    .card:hover .card-footer {
+      opacity: 1;
     }
 
+    /* التذييل */
     footer {
-      margin-top: 100px;
+      margin-top: 150px;
       padding-top: 40px;
-      border-top: 1px solid #222;
+      border-top: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    footer .copyright {
       color: var(--text-muted);
       font-size: 0.9rem;
     }
 
-    footer a {
+    footer .links a {
       color: var(--text-muted);
       text-decoration: none;
-      margin-right: 20px;
+      margin-right: 25px;
+      font-size: 0.9rem;
       transition: 0.3s;
     }
 
-    footer a:hover {
+    footer .links a:hover {
       color: var(--accent);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* أنيميشن الدخول */
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+      to { opacity: 1; transform: translateY(0); filter: blur(0); }
     }
 
-    /* تحسين الأرقام العربية لتظهر بشكل فخم */
-    [dir="rtl"] .card::before {
-      left: auto;
-      right: 20px;
+    @media (max-width: 600px) {
+      .container { padding: 60px 20px; }
+      header { margin-bottom: 60px; }
+      .card { padding: 30px; }
     }
   </style>
 </head>
@@ -149,30 +192,34 @@
     
     <header>
       <h1>x0r</h1>
-      <p style="color: var(--text-muted);">نصنع الأثر، نكتب الكود، ونترك بصمة رقمية هادئة.</p>
+      <p>تطبيقات مركزة، أدوات هادئة، وكتابات تقنية تترك أثراً.</p>
     </header>
 
-    <div class="projects-grid">
+    <main class="projects-grid">
 
       <a href="apps.html" class="card" data-index="[ ٠١ ]">
-        <div class="status">إصدارات مستقرة</div>
-        <h2>التطبيقات</h2>
-        <p>مجموعة من الأدوات الإسلامية والتقنية المصممة بدقة لتلبية احتياجات المستخدم بخصوصية تامة.</p>
-        <div style="font-family: 'JetBrains Mono'; font-size: 0.8rem;">EXPLORE PROJECTS →</div>
+        <div>
+          <div class="status-tag">Software</div>
+          <h2>التطبيقات</h2>
+          <p>بناء أدوات رقمية مفتوحة المصدر تركز على الخصوصية والمنفعة، من تطبيقات الأذكار إلى خدمات الصلاة.</p>
+        </div>
+        <div class="card-footer">VIEW PROJECTS <span>←</span></div>
       </a>
 
       <a href="#" class="card" data-index="[ ٠٢ ]">
-        <div class="status">قريباً</div>
-        <h2>التقارير والكتابات</h2>
-        <p>توثيق لرحلات صيد الثغرات (Bug Bounty) وشروحات تقنية في الأمن السيبراني والبرمجة.</p>
-        <div style="font-family: 'JetBrains Mono'; font-size: 0.8rem;">READ ARTICLES →</div>
+        <div>
+          <div class="status-tag">Coming Soon</div>
+          <h2>Writeups</h2>
+          <p>مساحة لمشاركة الخبرات في صيد الثغرات (Bug Bounty) وتحليل الأنظمة البرمجية.</p>
+        </div>
+        <div class="card-footer">READ MORE <span>←</span></div>
       </a>
 
-    </div>
+    </main>
 
     <footer>
-      <div>© 2026 x0r — صُنع بشغف</div>
-      <div>
+      <div class="copyright">© 2026 x0r — Crafted with precision</div>
+      <div class="links">
         <a href="https://github.com/x0r-1">GitHub</a>
         <a href="https://t.me/x0r_123">Telegram</a>
         <a href="https://www.linkedin.com/in/osama-alaa-el-bendary-379452380/">LinkedIn</a>
@@ -180,18 +227,6 @@
     </footer>
 
   </div>
-
-  <script>
-    // إضافة تأثير "الفخامة" عند الضغط: تفتيح الكارت لحظياً
-    document.querySelectorAll('.card').forEach(card => {
-      card.addEventListener('mousedown', () => {
-        card.style.backgroundColor = '#1a1a1a';
-      });
-      card.addEventListener('mouseup', () => {
-        card.style.backgroundColor = 'var(--card-bg)';
-      });
-    });
-  </script>
 
 </body>
 </html>
