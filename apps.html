@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>x0r — التطبيقات</title>
+  <title>x0r — Applications</title>
   
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;600&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -20,40 +20,39 @@
     body {
       background-color: var(--bg);
       color: var(--accent);
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       margin: 0;
-      padding: 0;
       line-height: 1.6;
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 80px 24px;
+      padding: 100px 24px;
     }
 
     header {
-      margin-bottom: 80px;
-      text-align: right;
+      margin-bottom: 100px;
     }
 
     header h1 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 3.5rem;
+      font-size: 4rem;
       margin: 0;
       letter-spacing: -3px;
     }
 
     header p {
       color: var(--text-muted);
-      font-size: 1.1rem;
+      font-size: 1.2rem;
+      margin-top: 10px;
     }
 
-    /* شبكة الكروت الطولية */
+    /* Grid for Vertical Cards */
     .apps-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
     }
 
     .app-card {
@@ -63,20 +62,19 @@
       transition: var(--transition);
       display: flex;
       flex-direction: column;
-      overflow: hidden;
+      height: 650px; /* Force Vertical Portrait Look */
     }
 
     .app-card:hover {
       border-color: #333;
-      transform: translateY(-10px);
+      transform: translateY(-15px);
     }
 
-    /* منطقة الفيديو */
+    /* Video Section (Takes 60% of height) */
     .video-container {
       width: 100%;
-      height: 200px;
+      height: 60%;
       background: #000;
-      position: relative;
       overflow: hidden;
       border-bottom: 1px solid var(--border);
     }
@@ -85,18 +83,18 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.6;
+      opacity: 0.5;
       transition: var(--transition);
     }
 
     .app-card:hover video {
-      opacity: 1;
-      transform: scale(1.05);
+      opacity: 0.9;
+      transform: scale(1.1);
     }
 
-    /* محتوى الكارت */
+    /* Content Section */
     .app-content {
-      padding: 30px;
+      padding: 40px 30px;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
@@ -106,64 +104,68 @@
       content: attr(data-index);
       font-family: 'JetBrains Mono';
       position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 0.7rem;
+      top: 25px;
+      left: 25px; /* Back to Left for English */
+      font-size: 0.75rem;
       z-index: 10;
-      background: rgba(0,0,0,0.5);
-      padding: 2px 8px;
-      border-radius: 4px;
+      color: var(--text-muted);
     }
 
     .app-card h2 {
-      font-size: 1.8rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
       margin: 0 0 10px 0;
       font-weight: 700;
     }
 
     .app-card span {
       font-family: 'JetBrains Mono';
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 1px;
-      display: block;
+      letter-spacing: 2px;
       margin-bottom: 15px;
+      display: block;
     }
 
     .app-card p {
       color: var(--text-muted);
       font-size: 0.95rem;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
       flex-grow: 1;
     }
 
-    /* الروابط */
+    /* Links Styled as Minimal Buttons */
     .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
     }
 
     .links a {
       font-family: 'JetBrains Mono';
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: var(--accent);
       text-decoration: none;
       border: 1px solid var(--border);
-      padding: 8px 15px;
+      padding: 12px;
+      text-align: center;
       transition: 0.3s;
     }
 
     .links a:hover {
       background: var(--accent);
       color: var(--bg);
+      border-color: var(--accent);
+    }
+
+    .links a.full {
+      grid-column: span 2;
     }
 
     footer {
-      margin-top: 100px;
-      padding-top: 40px;
+      margin-top: 150px;
+      padding-top: 50px;
       border-top: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
@@ -171,12 +173,12 @@
       font-size: 0.9rem;
     }
 
-    footer a { color: var(--text-muted); text-decoration: none; margin-right: 20px; transition: 0.3s; }
+    footer a { color: var(--text-muted); text-decoration: none; margin-left: 25px; transition: 0.3s; }
     footer a:hover { color: var(--accent); }
 
     @media (max-width: 600px) {
-      header h1 { font-size: 2.5rem; }
-      .apps-grid { grid-template-columns: 1fr; }
+      header h1 { font-size: 3rem; }
+      .app-card { height: 600px; }
     }
   </style>
 </head>
@@ -186,55 +188,55 @@
   <div class="container">
 
     <header>
-      <h1>التطبيقات</h1>
-      <p>بصمة رقمية.. صُممت لتدوم.</p>
+      <h1>Apps</h1>
+      <p>Purpose-driven software. Minimal by design.</p>
     </header>
 
     <div class="apps-grid">
 
-      <div class="app-card" data-index="[ ٠١ ]">
+      <div class="app-card" data-index="[ 01 ]">
         <div class="video-container">
           <video src="assets/athar.mp4" autoplay muted loop playsinline></video>
         </div>
         <div class="app-content">
-          <span>Android Application</span>
-          <h2>أثر</h2>
-          <p>"أثر" هو المشروع الجوهري؛ يركز على المحتوى ذو القيمة، المعنى، والأثر طويل المدى.</p>
+          <span>Android App</span>
+          <h2>Athar</h2>
+          <p>The core project. Focused on spiritual impact, long-term value, and clean aesthetics.</p>
           <div class="links">
-            <a href="https://raw.githubusercontent.com/x0r-1/athar_app/main/athar.apk">GitHub</a>
-            <a href="https://apkpure.com/p/com.example.athar">APKPure</a>
+            <a href="https://raw.githubusercontent.com/x0r-1/athar_app/main/athar.apk" class="full">Download (GitHub)</a>
+            <a href="#">APKPure</a>
             <a href="#">Uptodown</a>
           </div>
         </div>
       </div>
 
-      <div class="app-card" data-index="[ ٠٢ ]">
+      <div class="app-card" data-index="[ 02 ]">
         <div class="video-container">
           <video src="assets/zekr.mp4" autoplay muted loop playsinline></video>
         </div>
         <div class="app-content">
-          <span>Android Application</span>
-          <h2>الذكر</h2>
-          <p>تطبيق أذكار مفتوح المصدر، يعمل بالكامل بدون اتصال بالإنترنت مع تركيز تام على البساطة.</p>
+          <span>Open Source</span>
+          <h2>Al Zekr</h2>
+          <p>An offline-first dhikr application built for speed and simplicity with no tracking.</p>
           <div class="links">
-            <a href="https://x0r-1.github.io/AlZeker_App/app-latest.apk">GitHub</a>
-            <a href="https://apkpure.com/p/com.x0r.dhikr">APKPure</a>
+            <a href="https://x0r-1.github.io/AlZeker_App/app-latest.apk" class="full">Download (GitHub)</a>
+            <a href="#">APKPure</a>
             <a href="#">Uptodown</a>
           </div>
         </div>
       </div>
 
-      <div class="app-card" data-index="[ ٠٣ ]">
+      <div class="app-card" data-index="[ 03 ]">
         <div class="video-container">
           <video src="assets/furqan.mp4" autoplay muted loop playsinline></video>
         </div>
         <div class="app-content">
-          <span>Android Application</span>
-          <h2>الفرقان</h2>
-          <p>تطبيق قرآني مركز، صُمم ليوفر تجربة قراءة واضحة وسهلة الاستخدام.</p>
+          <span>Android App</span>
+          <h2>Al Furqan</h2>
+          <p>A specialized Quran reader designed for maximum focus and clarity in reading.</p>
           <div class="links">
-            <a href="https://raw.githubusercontent.com/x0r-1/Al_Furqan_App/main/al_furqan.apk">GitHub</a>
-            <a href="https://apkpure.com/p/com.example.al_furqan">APKPure</a>
+            <a href="https://raw.githubusercontent.com/x0r-1/Al_Furqan_App/main/al_furqan.apk" class="full">Download (GitHub)</a>
+            <a href="#">APKPure</a>
             <a href="#">Uptodown</a>
           </div>
         </div>
@@ -243,9 +245,9 @@
     </div>
 
     <footer>
-      <div>© x0r</div>
-      <div>
-        <a href="index.html">الرئيسية</a>
+      <div>© 2026 x0r — Quiet Design</div>
+      <div class="links-footer">
+        <a href="index.html">Home</a>
         <a href="https://github.com/x0r-1">GitHub</a>
         <a href="https://t.me/x0r_123">Telegram</a>
       </div>
